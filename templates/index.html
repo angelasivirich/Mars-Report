@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mission to Mars</title>
+    <link rel='stylesheet' href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/superhero/bootstrap.min.css">
+   
+</head>
+<body>
+
+  <div class="jumbotron text-center">
+    <h1 class="display-3">Mission to Mars</h1>  
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a>
+    </p>
+  </div>
+
+  <div> 
+    <h2>Featured Mars Image</h2>
+    <img src="{{mars_info.featured_image}}" alt="Featured Mars Image">
+  </div>
+
+   <div> 
+     <h2>{{mars_info.title}}</h2>
+     <p>{{mars_info.paragraph}}</p>
+   </div>
+   <hr>
+
+   <div>
+    <h2>Current Weather on Mars</h2>
+    <p>{{mars_info.mars_weather}}</p>
+   </div>
+
+   <div class="card border-info mb-3"> 
+     <h2>Mars Facts</h2>
+     <table class="table table-hover">
+        <tr class="table-dark">
+         <th><b>Description</b></th>
+         <th><b>Value</b></th> 
+        </tr>
+
+        {% for key in mars_info.mars_facts.Value.keys() %}
+          <tr class="table-light">
+          <td>{{key}}</td>
+          <td>{{mars_info.mars_facts.Value[key]}}</td>
+          </tr>
+        {% endfor%}
+
+    </table>
+   </div>
+   
+   <div>
+    <h2>Mars Hemispheres</h2>
+      
+      {%for x in range(4)%}
+        <img src="{{mars_info.mars_hemisphere[x].image}}">
+        <p> {{mars_info.mars_hemisphere[x].title}} </p> 
+      {% endfor %}
+
+   </div>    
+</body>
